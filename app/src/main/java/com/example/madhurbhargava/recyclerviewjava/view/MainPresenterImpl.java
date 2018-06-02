@@ -15,8 +15,8 @@ public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdat
     }
 
     @Override
-    public void fetchCryptoData() {
-        CryptoRepository.getInstance(this).fetchAllCryptoData();
+    public void fetchCryptoData(int start, int limit) {
+        CryptoRepository.getInstance(this).fetchCryptoData(start, limit);
     }
 
     @Override

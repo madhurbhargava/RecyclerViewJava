@@ -26,12 +26,28 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //Earlier We would have rely on the following variables to introduce paging but now we have a Paging Library as a part of Jetpack
+                Log.i("MainActivity", "onScrolled::getChildCount"+mRecyclerView.getLayoutManager().getChildCount());//number of visible items
+                Log.i("MainActivity", "onScrolled::getItemCount"+mRecyclerView.getLayoutManager().getItemCount());//number of total items
+                Log.i("MainActivity", "onScrolled::firstVisibleItemPosition"+((LinearLayoutManager)mRecyclerView.getLayoutManager()).findFirstVisibleItemPosition());
+                Log.i("MainActivity", "onScrolled::lastVisibleItemPosition"+((LinearLayoutManager)mRecyclerView.getLayoutManager()).findLastVisibleItemPosition());
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.fetchCryptoData();
+        presenter.fetchCryptoData(0, 50);
     }
 
     @Override

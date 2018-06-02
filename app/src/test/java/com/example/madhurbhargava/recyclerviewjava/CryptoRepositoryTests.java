@@ -56,7 +56,7 @@ public class CryptoRepositoryTests {
     @Test
     public void testServerRequests() throws Exception {
         RetrofitClientInstance.BASE_URL = mockWebServer.url("/").toString();
-        repository.fetchAllCryptoData();
+        repository.fetchCryptoData(0, 100);
         RecordedRequest request = this.mockWebServer.takeRequest();
         assertTrue(request.getMethod().equals("GET"));
         assertTrue(request.getPath().contains("ticker"));

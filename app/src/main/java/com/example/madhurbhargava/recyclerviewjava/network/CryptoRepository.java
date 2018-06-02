@@ -14,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 interface CryptoFetcher {
-    void fetchAllCryptoData();
+    void fetchCryptoData(int start, int limit);
 }
 
 public class CryptoRepository implements CryptoFetcher {
@@ -41,9 +41,9 @@ public class CryptoRepository implements CryptoFetcher {
     }
 
     @Override
-    public void fetchAllCryptoData() {
+    public void fetchCryptoData(int start, int limit) {
         GetCryptoDataService service = RetrofitClientInstance.getInstance().create(GetCryptoDataService.class);
-        Call<List<Cryptocurrency>> call = service.getAllCryptos();
+        Call<List<Cryptocurrency>> call = service.getAllCryptos(start, limit);
         call.enqueue(new Callback<List<Cryptocurrency>>() {
             @Override
             public void onResponse(Call<List<Cryptocurrency>> call, Response<List<Cryptocurrency>> response) {

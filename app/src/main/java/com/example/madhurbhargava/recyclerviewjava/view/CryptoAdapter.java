@@ -15,6 +15,7 @@ import java.util.List;
 public class CryptoAdapter extends RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder> {
 
     private List<Cryptocurrency> mCurrencyList;
+
     public static class CryptoViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
         public CryptoViewHolder(TextView itemView) {

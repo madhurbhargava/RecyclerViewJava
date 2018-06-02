@@ -11,7 +11,7 @@ public interface MainPresenter {
         void showData(List<Cryptocurrency> currencies);
         void showError(DataError error);
     }
-    void fetchCryptoData();
+    void fetchCryptoData(int start, int limit);
     interface DataUpdater {
         void onDataReceived(List<Cryptocurrency> currencies);
         void onDataFetchFailed(DataError error);
