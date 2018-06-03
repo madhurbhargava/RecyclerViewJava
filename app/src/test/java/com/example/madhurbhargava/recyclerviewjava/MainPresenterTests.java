@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 public class MainPresenterTests {
 
     @Mock
-    MainPresenter.View view;
+    MainPresenter.MainView view;
 
     MainPresenter.DataUpdater presenter;
 

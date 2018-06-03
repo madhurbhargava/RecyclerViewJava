@@ -12,9 +12,11 @@ import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.View {
+import javax.inject.Inject;
 
+public class MainActivity extends AppCompatActivity implements MainPresenter.MainView {
     private MainPresenter presenter;
+
     private RecyclerView mRecyclerView;
 
     @Override

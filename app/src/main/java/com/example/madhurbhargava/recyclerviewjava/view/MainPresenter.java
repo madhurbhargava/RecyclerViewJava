@@ -7,7 +7,7 @@ import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 import java.util.List;
 
 public interface MainPresenter {
-    interface View {
+    interface MainView {
         void showData(List<Cryptocurrency> currencies);
         void showError(DataError error);
     }

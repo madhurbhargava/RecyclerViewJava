@@ -1,5 +1,7 @@
 package com.example.madhurbhargava.recyclerviewjava.view;
 
+import android.view.View;
+
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 import com.example.madhurbhargava.recyclerviewjava.model.DataError;
 import com.example.madhurbhargava.recyclerviewjava.network.CryptoRepository;
@@ -8,9 +10,9 @@ import java.util.List;
 
 public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdater {
 
-    private View view;
+    private MainView view;
 
-    public MainPresenterImpl(View view) {
+    public MainPresenterImpl(MainView view) {
         this.view = view;
     }
 
