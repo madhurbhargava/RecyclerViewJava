@@ -60,7 +60,6 @@ public class CryptoRepositoryTests {
         RecordedRequest request = this.mockWebServer.takeRequest();
         assertTrue(request.getMethod().equals("GET"));
         assertTrue(request.getPath().contains("ticker"));
-
     }
 
     @Test

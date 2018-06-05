@@ -42,7 +42,7 @@ public class CryptoRepository implements CryptoFetcher {
 
     @Override
     public void fetchCryptoData(int start, int limit) {
-        GetCryptoDataService service = RetrofitClientInstance.getInstance().create(GetCryptoDataService.class);
+        GetCryptoDataService service = createCryptoDataService();
         Call<List<Cryptocurrency>> call = service.getAllCryptos(start, limit);
         call.enqueue(new Callback<List<Cryptocurrency>>() {
             @Override
@@ -55,5 +55,9 @@ public class CryptoRepository implements CryptoFetcher {
                 updater.onDataFetchFailed(new DataError(t.getMessage()));
             }
         });
+    }
+
+    public GetCryptoDataService createCryptoDataService(){
+        return RetrofitClientInstance.getInstance().create(GetCryptoDataService.class);
     }
 }
