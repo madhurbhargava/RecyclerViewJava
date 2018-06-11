@@ -1,5 +1,7 @@
 package com.example.madhurbhargava.recyclerviewjava.view;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.paging.PagedList;
 import android.view.View;
 
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdater {
 
+    public LiveData<PagedList<Cryptocurrency>> userList;
     private MainView view;
 
     public MainPresenterImpl(MainView view) {
