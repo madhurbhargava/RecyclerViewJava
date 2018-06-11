@@ -5,25 +5,26 @@ import android.support.annotation.NonNull;
 
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 
-public class CryptoCurrencyDataSource extends ItemKeyedDataSource<Long, Cryptocurrency> {
+public class CryptoCurrencyDataSource extends ItemKeyedDataSource<Integer, Cryptocurrency> {
+
     @Override
-    public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull LoadInitialCallback<Cryptocurrency> callback) {
+    public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Cryptocurrency> callback) {
 
     }
 
     @Override
-    public void loadAfter(@NonNull LoadParams<Long> params, @NonNull LoadCallback<Cryptocurrency> callback) {
+    public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Cryptocurrency> callback) {
 
     }
 
     @Override
-    public void loadBefore(@NonNull LoadParams<Long> params, @NonNull LoadCallback<Cryptocurrency> callback) {
+    public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Cryptocurrency> callback) {
 
     }
 
     @NonNull
     @Override
-    public Long getKey(@NonNull Cryptocurrency item) {
-        return null;
+    public Integer getKey(@NonNull Cryptocurrency item) {
+        return item.getRank();
     }
 }

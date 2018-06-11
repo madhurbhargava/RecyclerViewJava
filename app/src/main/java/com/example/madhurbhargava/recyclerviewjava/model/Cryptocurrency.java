@@ -19,6 +19,9 @@ public class Cryptocurrency {
     @SerializedName("symbol")
     String symbol;
 
+    @SerializedName("rank")
+    Integer rank;
+
     public Cryptocurrency(String id, String name, Double price, String symbol) {
         this.id = id;
         this.name = name;
@@ -56,6 +59,14 @@ public class Cryptocurrency {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
 }
