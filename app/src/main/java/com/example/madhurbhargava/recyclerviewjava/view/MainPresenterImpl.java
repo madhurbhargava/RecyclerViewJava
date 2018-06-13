@@ -1,12 +1,14 @@
 package com.example.madhurbhargava.recyclerviewjava.view;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.ItemKeyedDataSource;
 import android.arch.paging.PagedList;
 import android.view.View;
 
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 import com.example.madhurbhargava.recyclerviewjava.model.DataError;
 import com.example.madhurbhargava.recyclerviewjava.network.CryptoRepository;
+import com.example.madhurbhargava.recyclerviewjava.paging.ItemKeyedCryptoDataSource;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdat
 
     public LiveData<PagedList<Cryptocurrency>> userList;
     private MainView view;
+    LiveData<ItemKeyedCryptoDataSource> dataSource;
 
     public MainPresenterImpl(MainView view) {
         this.view = view;
@@ -21,7 +24,7 @@ public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdat
 
     @Override
     public void fetchCryptoData(int start, int limit) {
-        CryptoRepository.getInstance(this).fetchCryptoData(start, limit);
+        //CryptoRepository.getInstance(this).fetchCryptoData(start, limit);
     }
 
     @Override

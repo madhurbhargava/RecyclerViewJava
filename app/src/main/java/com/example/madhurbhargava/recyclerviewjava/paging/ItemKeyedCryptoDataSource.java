@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 
-public class CryptoCurrencyDataSource extends ItemKeyedDataSource<Integer, Cryptocurrency> {
+public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryptocurrency> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Cryptocurrency> callback) {
