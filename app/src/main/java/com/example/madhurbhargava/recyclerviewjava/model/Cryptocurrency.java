@@ -1,10 +1,25 @@
 package com.example.madhurbhargava.recyclerviewjava.model;
 
 import android.media.Image;
+import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
+
 
 import com.google.gson.annotations.SerializedName;
 
 public class Cryptocurrency {
+
+    public static DiffUtil.ItemCallback<Cryptocurrency> DIFF_CALLBACK = new DiffUtil.ItemCallback<Cryptocurrency>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Cryptocurrency oldItem, @NonNull Cryptocurrency newItem) {
+            return oldItem.id == newItem.id;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Cryptocurrency oldItem, @NonNull Cryptocurrency newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 
     @SerializedName("id")
     String id;

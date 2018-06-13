@@ -17,6 +17,10 @@ import java.util.concurrent.Executor;
 
 public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdater {
 
+    public LiveData<PagedList<Cryptocurrency>> getUserList() {
+        return userList;
+    }
+
     public LiveData<PagedList<Cryptocurrency>> userList;
     private MainView view;
     LiveData<ItemKeyedCryptoDataSource> dataSource;

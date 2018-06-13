@@ -8,6 +8,7 @@ import com.example.madhurbhargava.recyclerviewjava.network.CryptoRepository;
 import com.example.madhurbhargava.recyclerviewjava.network.GetCryptoDataService;
 import com.example.madhurbhargava.recyclerviewjava.view.MainPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,14 +24,15 @@ public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryp
     }
 
     @Override
-    public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Cryptocurrency> callback) {
+    public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Cryptocurrency> callback) {
+        final List<Cryptocurrency> currencies = new ArrayList();
         service.getAllCryptos(1, params.requestedLoadSize).
                 enqueue(new Callback<List<Cryptocurrency>>() {
 
                     @Override
                     public void onResponse(Call<List<Cryptocurrency>> call, Response<List<Cryptocurrency>> response) {
-
-
+                        currencies.addAll(response.body());
+                        callback.onResult(currencies);
                     }
 
 
@@ -44,7 +46,25 @@ public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryp
     }
 
     @Override
-    public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Cryptocurrency> callback) {
+    public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull final LoadCallback<Cryptocurrency> callback) {
+        final List<Cryptocurrency> currencies = new ArrayList();
+        service.getAllCryptos(params.key, params.requestedLoadSize).
+                enqueue(new Callback<List<Cryptocurrency>>() {
+
+                    @Override
+                    public void onResponse(Call<List<Cryptocurrency>> call, Response<List<Cryptocurrency>> response) {
+                        currencies.addAll(response.body());
+                        callback.onResult(currencies);
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<List<Cryptocurrency>> call, Throwable t) {
+
+
+                    }
+
+                });
 
     }
 

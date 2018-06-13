@@ -1,5 +1,6 @@
 package com.example.madhurbhargava.recyclerviewjava.view;
 
+import android.arch.paging.PagedListAdapter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +13,7 @@ import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 
 import java.util.List;
 
-public class CryptoAdapter extends RecyclerView.Adapter<CryptoAdapter.CryptoViewHolder> {
+public class CryptoAdapter extends PagedListAdapter<Cryptocurrency, CryptoAdapter.CryptoViewHolder> {
 
     private List<Cryptocurrency> mCurrencyList;
 
@@ -24,8 +25,8 @@ public class CryptoAdapter extends RecyclerView.Adapter<CryptoAdapter.CryptoView
         }
     }
 
-    public CryptoAdapter(List<Cryptocurrency> currencies) {
-        mCurrencyList = currencies;
+    public CryptoAdapter() {
+        super(Cryptocurrency.DIFF_CALLBACK);
     }
 
     @NonNull
@@ -39,11 +40,6 @@ public class CryptoAdapter extends RecyclerView.Adapter<CryptoAdapter.CryptoView
 
     @Override
     public void onBindViewHolder(@NonNull CryptoViewHolder holder, int position) {
-        holder.mTextView.setText(mCurrencyList.get(position).getName()+":"+"$"+mCurrencyList.get(position).getPrice());
-    }
-
-    @Override
-    public int getItemCount() {
-        return mCurrencyList.size();
+        holder.mTextView.setText(getItem(position).getName()+":"+"$"+getItem(position).getPrice());
     }
 }
