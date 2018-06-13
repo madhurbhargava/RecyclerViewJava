@@ -24,13 +24,14 @@ public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdat
 
     public MainPresenterImpl(MainView view) {
         this.view = view;
+
         PagedList.Config pagedListConfig =
                 (new PagedList.Config.Builder()).setEnablePlaceholders(false)
                         .setInitialLoadSizeHint(10)
                         .setPageSize(20).build();
 
-        CryptocurrencyDataSourceFactory dataSourceFactory = new CryptocurrencyDataSourceFactory();
-
+        CryptocurrencyDataSourceFactory dataSourceFactory = new CryptocurrencyDataSourceFactory(this);
+        dataSource = dataSourceFactory.getMutableLiveData();
         userList = (new LivePagedListBuilder(dataSourceFactory, pagedListConfig))
                 .build();
 
