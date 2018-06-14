@@ -8,13 +8,8 @@ public class CryptocurrencyDataSourceFactory extends DataSource.Factory {
     MutableLiveData<ItemKeyedCryptoDataSource> mutableLiveData;
     ItemKeyedCryptoDataSource itemKeyedCryptoDataSource;
 
-
-    public MutableLiveData<ItemKeyedCryptoDataSource> getMutableLiveData() {
-        return mutableLiveData;
-    }
-
     public CryptocurrencyDataSourceFactory() {
-        mutableLiveData = new MutableLiveData<ItemKeyedCryptoDataSource>();
+        mutableLiveData = new MutableLiveData<>();
 
     }
 

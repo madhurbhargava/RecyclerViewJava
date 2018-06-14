@@ -17,13 +17,7 @@ import java.util.concurrent.Executor;
 
 public class MainPresenterImpl {
 
-    public LiveData<PagedList<Cryptocurrency>> getUserList() {
-        return userList;
-    }
-
     public LiveData<PagedList<Cryptocurrency>> userList;
-    LiveData<ItemKeyedCryptoDataSource> dataSource;
-    Executor executor;
 
     public MainPresenterImpl() {
 
@@ -33,7 +27,6 @@ public class MainPresenterImpl {
                         .setPageSize(20).build();
 
         CryptocurrencyDataSourceFactory dataSourceFactory = new CryptocurrencyDataSourceFactory();
-        dataSource = dataSourceFactory.getMutableLiveData();
         userList = (new LivePagedListBuilder(dataSourceFactory, pagedListConfig))
                 .build();
 
