@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 import com.example.madhurbhargava.recyclerviewjava.network.CryptoRepository;
 import com.example.madhurbhargava.recyclerviewjava.network.GetCryptoDataService;
-import com.example.madhurbhargava.recyclerviewjava.view.MainPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,8 @@ public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryp
 
     GetCryptoDataService service;
 
-    public ItemKeyedCryptoDataSource(MainPresenter.DataUpdater updater) {
-        service = CryptoRepository.getInstance(updater).createCryptoDataService();
+    public ItemKeyedCryptoDataSource() {
+        service = CryptoRepository.getInstance().createCryptoDataService();
     }
 
     @Override

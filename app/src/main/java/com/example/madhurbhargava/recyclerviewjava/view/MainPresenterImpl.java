@@ -15,44 +15,27 @@ import com.example.madhurbhargava.recyclerviewjava.paging.ItemKeyedCryptoDataSou
 import java.util.List;
 import java.util.concurrent.Executor;
 
-public class MainPresenterImpl implements MainPresenter, MainPresenter.DataUpdater {
+public class MainPresenterImpl {
 
     public LiveData<PagedList<Cryptocurrency>> getUserList() {
         return userList;
     }
 
     public LiveData<PagedList<Cryptocurrency>> userList;
-    private MainView view;
     LiveData<ItemKeyedCryptoDataSource> dataSource;
     Executor executor;
 
-    public MainPresenterImpl(MainView view) {
-        this.view = view;
+    public MainPresenterImpl() {
 
         PagedList.Config pagedListConfig =
                 (new PagedList.Config.Builder()).setEnablePlaceholders(false)
                         .setInitialLoadSizeHint(10)
                         .setPageSize(20).build();
 
-        CryptocurrencyDataSourceFactory dataSourceFactory = new CryptocurrencyDataSourceFactory(this);
+        CryptocurrencyDataSourceFactory dataSourceFactory = new CryptocurrencyDataSourceFactory();
         dataSource = dataSourceFactory.getMutableLiveData();
         userList = (new LivePagedListBuilder(dataSourceFactory, pagedListConfig))
                 .build();
 
-    }
-
-    @Override
-    public void fetchCryptoData(int start, int limit) {
-        //CryptoRepository.getInstance(this).fetchCryptoData(start, limit);
-    }
-
-    @Override
-    public void onDataReceived(List<Cryptocurrency> currencies) {
-        view.showData(currencies);
-    }
-
-    @Override
-    public void onDataFetchFailed(DataError error) {
-        view.showError(error);
     }
 }

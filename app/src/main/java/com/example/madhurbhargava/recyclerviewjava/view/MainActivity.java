@@ -15,7 +15,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.MainView {
+public class MainActivity extends AppCompatActivity {
     private MainPresenterImpl presenter;
 
     private RecyclerView mRecyclerView;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        presenter = new MainPresenterImpl(this);
+        presenter = new MainPresenterImpl();
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
@@ -40,15 +40,5 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    @Override
-    public void showData(List<Cryptocurrency> currencies) {
-
-    }
-
-    @Override
-    public void showError(DataError error) {
-        Log.i(MainActivity.class.toString(), error.getErrorMessage());
     }
 }

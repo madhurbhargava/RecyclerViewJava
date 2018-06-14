@@ -3,7 +3,7 @@ package com.example.madhurbhargava.recyclerviewjava;
 import com.example.madhurbhargava.recyclerviewjava.model.Cryptocurrency;
 import com.example.madhurbhargava.recyclerviewjava.network.CryptoRepository;
 import com.example.madhurbhargava.recyclerviewjava.network.RetrofitClientInstance;
-import com.example.madhurbhargava.recyclerviewjava.view.MainPresenter;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,12 +24,9 @@ public class CryptoRepositoryTests {
     private CryptoRepository repository;
     private MockWebServer mockWebServer;
 
-    @Mock
-    private MainPresenter.DataUpdater updater;
-
     @Before
     public void setUp() throws Exception {
-        repository = CryptoRepository.getInstance(updater);
+        repository = CryptoRepository.getInstance();
         mockWebServer = new MockWebServer();
         mockWebServer.start();
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody("[\n" +
@@ -56,7 +53,6 @@ public class CryptoRepositoryTests {
     @Test
     public void testServerRequests() throws Exception {
         RetrofitClientInstance.BASE_URL = mockWebServer.url("/").toString();
-        repository.fetchCryptoData(0, 100);
         RecordedRequest request = this.mockWebServer.takeRequest();
         assertTrue(request.getMethod().equals("GET"));
         assertTrue(request.getPath().contains("ticker"));
