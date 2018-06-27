@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
     @Inject MainPresenterImpl presenter;
+    @Inject CryptoAdapter adapter;
 
     private RecyclerView mRecyclerView;
 
@@ -28,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ((MainApplication)getApplication()).getMainPresenterComponent().inject(this);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final PagedListAdapter adapter = new CryptoAdapter();
 
         presenter.userList.observe(this, pagedList -> {
             adapter.submitList(pagedList);
