@@ -34,11 +34,8 @@ public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryp
                         callback.onResult(currencies);
                     }
 
-
                     @Override
                     public void onFailure(Call<List<Cryptocurrency>> call, Throwable t) {
-
-
                     }
 
                 });
@@ -59,8 +56,6 @@ public class ItemKeyedCryptoDataSource extends ItemKeyedDataSource<Integer, Cryp
 
                     @Override
                     public void onFailure(Call<List<Cryptocurrency>> call, Throwable t) {
-
-
                     }
 
                 });

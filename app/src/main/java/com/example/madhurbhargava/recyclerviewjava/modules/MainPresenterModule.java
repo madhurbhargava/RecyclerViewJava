@@ -8,7 +8,6 @@ import dagger.Provides;
 @Module
 public class MainPresenterModule {
 
-
     @Provides
     static MainPresenterImpl provideMainPresenter() {
         return new MainPresenterImpl();

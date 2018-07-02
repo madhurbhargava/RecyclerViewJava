@@ -20,7 +20,6 @@ public class CryptoRepository {
     private static CryptoRepository sRepository;
 
     private CryptoRepository() {
-
     }
 
     public synchronized static CryptoRepository getInstance() {

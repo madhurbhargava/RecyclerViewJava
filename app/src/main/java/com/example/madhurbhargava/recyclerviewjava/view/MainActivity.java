@@ -16,11 +16,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+
 public class MainActivity extends AppCompatActivity {
     @Inject MainPresenterImpl presenter;
     @Inject CryptoAdapter adapter;
 
     private RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

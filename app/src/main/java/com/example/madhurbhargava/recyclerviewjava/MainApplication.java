@@ -15,9 +15,6 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mainComponent = DaggerMainPresenterComponent.builder().mainPresenterModule(new MainPresenterModule()).build();
-
-
-
     }
 
     public MainPresenterComponent getMainPresenterComponent() {
